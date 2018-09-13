@@ -1,4 +1,25 @@
+#  ██                        ██
+# ░██                       ░██
+# ░██       ██████    ██████░██      ██████  █████
+# ░██████  ░░░░░░██  ██░░░░ ░██████ ░░██░░█ ██░░░██
+# ░██░░░██  ███████ ░░█████ ░██░░░██ ░██ ░ ░██  ░░
+# ░██  ░██ ██░░░░██  ░░░░░██░██  ░██ ░██   ░██   ██
+# ░██████ ░░████████ ██████ ░██  ░██░███   ░░█████
+# ░░░░░    ░░░░░░░░ ░░░░░░  ░░   ░░ ░░░     ░░░░░
+#
+#  ▓▓▓▓▓▓▓▓▓▓
+# ░▓ author ▓ xero <x@xero.nu>
+# ░▓ code   ▓ http://code.xero.nu/dotfiles
+# ░▓ mirror ▓ http://git.io/.files
+# ░▓▓▓▓▓▓▓▓▓▓
+# ░░░░░░░░░░
+#
+#▓▒░ only interactive shells
 [ -z "$PS1" ] && return
+
+#▓▒░ env vars
+export EDITOR=nvim
+export VISUAL=nvim
 
 #█▓▒░ aliases
 alias xyzzy="echo nothing happens"
@@ -48,10 +69,6 @@ export LESS_TERMCAP_so=$'\E[38;33;246m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[04;38;5;146m'
 
-#█▓▒░ env vars
-export EDITOR=nvim
-export VISUAL=nvim
-
 #█▓▒░ prompt
 ICO_DIRTY="*"
 ICO_AHEAD="↑"
@@ -71,28 +88,27 @@ fi
 
 #█▓▒░ git status
 GIT_PROMPT() {
-  test=$(git rev-parse --is-inside-work-tree 2> /dev/null)
-  if [ ! "$test" ]
-  then
-    return
-  fi
-  ref=$(git name-rev --name-only HEAD | sed 's!remotes/!!;s!undefined!merging!' 2> /dev/null)
-  dirty="" && [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && dirty=$ICO_DIRTY
-  stat=$(git status | sed -n 2p)
-  case "$stat" in
-    *ahead*)
-      stat=$ICO_AHEAD
-    ;;
-    *behind*)
-      stat=$ICO_BEHIND
-    ;;
-    *diverged*)
-      stat=$ICO_DIVERGED
-    ;;
-    *)
-      stat=""
-    ;;
-  esac
-  echo "${USER_LEVEL}─[${COLOR_NORMAL}"${ref}${dirty}${stat}"${USER_LEVEL}]"
+	test=$(git rev-parse --is-inside-work-tree 2> /dev/null)
+	if [ ! "$test" ]; then
+		return
+	fi
+	ref=$(git name-rev --name-only HEAD | sed 's!remotes/!!;s!undefined!merging!' 2> /dev/null)
+	dirty="" && [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && dirty=$ICO_DIRTY
+	stat=$(git status | sed -n 2p)
+	case "$stat" in
+		*ahead*)
+			stat=$ICO_AHEAD
+		;;
+		*behind*)
+			stat=$ICO_BEHIND
+		;;
+		*diverged*)
+			stat=$ICO_DIVERGED
+		;;
+		*)
+			stat=""
+		;;
+	esac
+	echo "${USER_LEVEL}─[${COLOR_NORMAL}"${ref}${dirty}${stat}"${USER_LEVEL}]"
 }
 export PS1='${USER_LEVEL}[${COLOR_NORMAL}\h${USER_LEVEL}]─${USER_LEVEL}[${COLOR_NORMAL}\w${USER_LEVEL}]$(GIT_PROMPT)── - \e[0m'
