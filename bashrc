@@ -20,6 +20,7 @@
 #▓▒░ env vars
 export EDITOR=nvim
 export VISUAL=nvim
+export TERM=screen-256color
 
 #█▓▒░ aliases
 alias xyzzy="echo nothing happens"
@@ -58,7 +59,7 @@ alias gcs="git commit -S -m"
 alias ag="ag --color --color-line-number '0;35' --color-match '46;30' --color-path '4;36'"
 alias tree='tree -CAFa -I "CVS|*.*.package|.svn|.git|.hg|node_modules|bower_components" --dirsfirst'
 alias ZZ="exit"
-alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙────────────────────────────────────── ─ ─ "; lsblk -a; echo ""; echo "╓───── d i s k . u s a g e"; echo "╙────────────────────────────────────── ─ ─ "; df -h;'
+alias disks='echo "┏━━━━━ m o u n t . p o i n t s"; echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ━ ━ "; lsblk -a; echo ""; echo "┏━━━━━ d i s k . u s a g e"; echo "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ━ ━ "; df -h;'
 
 #█▓▒░ colorize man pages
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -109,6 +110,6 @@ GIT_PROMPT() {
 			stat=""
 		;;
 	esac
-	echo "${USER_LEVEL}─[${COLOR_NORMAL}"${ref}${dirty}${stat}"${USER_LEVEL}]"
+	echo "${USER_LEVEL}━[${COLOR_NORMAL}"${ref}${dirty}${stat}"${USER_LEVEL}]"
 }
-export PS1='${USER_LEVEL}[${COLOR_NORMAL}\h${USER_LEVEL}]─${USER_LEVEL}[${COLOR_NORMAL}\w${USER_LEVEL}]$(GIT_PROMPT)── - \e[0m'
+export PS1='${USER_LEVEL}[${COLOR_NORMAL}\h${USER_LEVEL}]━${USER_LEVEL}[${COLOR_NORMAL}\w${USER_LEVEL}]$(GIT_PROMPT)━━ ━ \e[0m'
