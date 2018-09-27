@@ -180,7 +180,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'xero/sourcerer.vim'
 Plug 'xero/blaquemagick.vim'
 Plug 'xero/vim-noctu'
-Plug 'arcticicestudio/nord-vim'
+Plug 'xero/nord-vim-mod'
 
 " features
 Plug 'shougo/deoplete.nvim', has('nvim') ? {} : { 'do': [':UpdateRemotePlugins', ':set runtimepath+=~/.vim/plugged/deoplete.nvim/'] }
@@ -208,6 +208,7 @@ Plug 'godlygeek/tabular'
 Plug 'chrisbra/unicode.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
+Plug 'powerman/vim-plugin-AnsiEsc'
 
 call plug#end()
 
