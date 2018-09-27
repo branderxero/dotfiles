@@ -174,7 +174,7 @@ command Chmodx :!chmod a+x %
 command FixSyntax :syntax sync fromstart
 
 " plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin('/etc/xdg/nvim/plugged')
 
 " colors
 Plug 'xero/sourcerer.vim'
@@ -183,7 +183,6 @@ Plug 'xero/vim-noctu'
 Plug 'xero/nord-vim-mod'
 
 " features
-Plug 'shougo/deoplete.nvim', has('nvim') ? {} : { 'do': [':UpdateRemotePlugins', ':set runtimepath+=~/.vim/plugged/deoplete.nvim/'] }
 Plug 'ajh17/VimCompletesMe'
 Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
